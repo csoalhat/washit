@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title Washit
+    %link{href: "http://yui.yahooapis.com/pure/0.5.0/pure-min.css", rel: "stylesheet"}/
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  %body
+  #layout
+    / Menu toggle
+    %a#menuLink.menu-link{href: "#menu"}
+      / Hamburger icon
+      %span
+    #menu
+      .pure-menu.pure-menu-open
+        %a.pure-menu-heading{href: "#"} Washit
+        %ul
+          %li
+            %a{href: "#"} Order
+          %li.menu-item-divided.pure-menu-selected
+            %a{href: "#"} Past Orders
+          %li
+            %a{href: "#"} Price
+    #main
+      .header
+        = yield
+          

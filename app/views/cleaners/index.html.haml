@@ -1,0 +1,27 @@
+%h1 Listing cleaners
+
+%table
+  %tr
+    %th Area
+    %th Name
+    %th Phone
+    %th Address
+    %th Information
+    %th Orders
+
+
+  - @cleaners.each do |cleaner|
+    %tr
+      %td= cleaner.area
+      %td= cleaner.name
+      %td= cleaner.phone
+      %td= cleaner.address
+      %td= cleaner.information
+      %td= cleaner.orders.count
+      %td= link_to 'Show', cleaner
+      %td= link_to 'Edit', edit_cleaner_path(cleaner)
+      %td= link_to 'Destroy', cleaner, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Cleaner', new_cleaner_path

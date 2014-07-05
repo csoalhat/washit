@@ -1,0 +1,44 @@
+%p#notice= notice
+
+%p
+  %b Address:
+  = @order.client.home_address
+%p
+  %b Postcode:
+  = @order.client.home_address_zipcode
+%p
+  %b Pickup date:
+  = @order.pickup_date
+%p
+  %b Pickup time:
+  = @order.pickup_time
+%p
+  %b Return date:
+  = @order.return_date
+%p
+  %b Return time:
+  = @order.return_time
+%p
+  %b Instructions:
+  = @order.instructions
+%p
+  %b Dry cleaning:
+  = @order.dry_cleaning
+%p
+  %b Wash:
+  = @order.wash
+%p
+  %b Client:
+  = @order.client.last_name
+%p
+  %b Driver:
+/   = @order.driver.last_name
+%p
+  %b Dry Cleaning:
+/   = @order.cleaners.name
+
+
+
+= link_to 'Edit', edit_order_path(@order)
+\|
+= link_to 'Back', orders_path

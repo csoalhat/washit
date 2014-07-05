@@ -1,0 +1,32 @@
+%h1 Dashboard - Listing clients
+%p this is dashboard only - view all the clients  
+%table
+  %tr
+    %th First name
+    %th Last name
+    %th Home address
+    %th Home address zipcode
+    %th Home address city
+    %th Phone
+    %th Email
+    %th Orders
+
+
+  - @clients.each do |client|
+    %tr
+      %td= client.first_name
+      %td= client.last_name
+      %td= client.home_address
+      %td= client.home_address_zipcode
+      %td= client.home_address_city
+      %td= client.phone
+      %td= client.user.email
+      %td= client.orders.count
+
+      %td= link_to 'Show', client
+      %td= link_to 'Edit', edit_client_path(client)
+      %td= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Client', new_client_path
