@@ -7,6 +7,9 @@ class ClientsController < ApplicationController
     @clients = Client.all
   end
 
+  def history
+  end
+
   # GET /clients/1
   # GET /clients/1.json
   def show

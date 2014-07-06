@@ -35,6 +35,7 @@ gem 'haml-rails'
 gem 'carrierwave', '0.9.0'
 gem "ransack"
 gem "omniauth-google-oauth2"
+gem 'cancan'
 
 
 group :doc do

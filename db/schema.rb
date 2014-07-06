@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(version: 20140705161016) do
 
   create_table "orders", force: true do |t|
     t.string   "address"
-    t.string   "pickup_date"
-    t.string   "pickup_time"
-    t.string   "return_date"
-    t.string   "return_time"
+    t.date     "pickup_date"
+    t.time     "pickup_time"
+    t.date     "return_date"
+    t.time     "return_time"
     t.string   "instructions"
     t.boolean  "dry_cleaning"
     t.boolean  "wash"

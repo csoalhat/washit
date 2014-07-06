@@ -3,7 +3,12 @@ Washit::Application.routes.draw do
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout'}, :controllers => {:registrations => 'users',
  omniauth_callbacks: "omniauth_callbacks"}
 
-  resources :users 
+ devise_scope :user do
+    get "login", :to => "devise/sessions#new"
+    resources :users,  only: [:index]
+  end
+
+  # resources :users 
 
   resources :cleaners
 
@@ -17,6 +22,7 @@ Washit::Application.routes.draw do
 
   root 'clients#index'
 
+  get '/clients/:id/history', to: 'clients#history', as: 'history'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
