@@ -4,10 +4,14 @@ class Ability
   def initialize(user)
     user ||= User.new
     if user.role == "admin"
-      can :create, :manage, :all
+      can :manage, :all
     elsif user.role == "user"
-      can :create, [Order, Client], user_id: user.id
-      can :show, [Order, Client], user_id: user.id
+      can :show, Order, user_id: user.id
+      can :create, Order, user_id: user.id
+      can :update, Order, user_id: user.id
+      can :show, Client, user_id: user.id
+      can :create, Client, user_id: user.id
+      can :update, Client, user_id: user.id
     else
       cannot :read, :all
     end

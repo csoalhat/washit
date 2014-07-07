@@ -10,26 +10,14 @@
   %b Home address:
   = @client.home_address
 %p
-  %b Home address zipcode:
+  %b Postcode:
   = @client.home_address_zipcode
-%p
-  %b Home address city:
-  = @client.home_address_city
-/ %p
-/   %b Work address:
-/   = @client.work_address
-/ %p
-/   %b Work address zipcode:
-/   = @client.work_address_zipcode
-/ %p
-/   %b Work address city:
-/   = @client.work_address_city
 %p
   %b Phone:
   = @client.phone
 %p
-  / %b Email:
-  / = @client.user.email
+  %b Email:
+  = @client.user.email
 
 = link_to 'Edit', edit_client_path(@client)
 \|

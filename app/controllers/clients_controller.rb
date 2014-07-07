@@ -8,11 +8,19 @@ class ClientsController < ApplicationController
   end
 
   def history
+    @client = current_user
   end
 
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @user = if params[:user_id]
+      User.find(params[:user_id])
+    elsif current_user
+      current_user
+    else
+      authenticate_user!
+    end
   end
 
   # GET /clients/new
@@ -22,16 +30,17 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
+    @client = current_user.client
   end
 
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(client_params)
+    @client = current_user.build_client(client_params)
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.html { redirect_to new_order_path, notice: 'Client was successfully created.' }
         format.json { render action: 'show', status: :created, location: @client }
       else
         format.html { render action: 'new' }
@@ -43,9 +52,10 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
+    @client = current_user.client.new(client_params)
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.html { redirect_to new_order_path, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

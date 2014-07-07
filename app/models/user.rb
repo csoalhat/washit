@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
    devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable,
-  :validatable, :timeoutable, :omniauthable
+  :validatable, :timeoutable, :omniauthable , :omniauth_providers => [:google_oauth2]
 
   has_one :client
 

@@ -12,14 +12,15 @@
     %th Instructions
     %th Dry cleaning
     %th Wash
+    %th Status
 
 
 
   - @orders.each do |order|
     %tr
-      %td= order.client.last_name
-      / %td= order.home_address
-      / %td= order.home_zipcode
+      / %td= order.client.first_name
+      / %td= order.client.home_address
+      / %td= order.client.home_address_zipcode
       %td= order.pickup_date
       %td= order.pickup_time
       %td= order.return_date
@@ -27,6 +28,8 @@
       %td= order.instructions
       %td= order.dry_cleaning
       %td= order.wash
+      %td= order.status
+      
       %td= link_to 'Show', order
       %td= link_to 'Edit', edit_order_path(order)
       %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }

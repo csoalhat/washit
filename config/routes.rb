@@ -20,9 +20,9 @@ Washit::Application.routes.draw do
 
   resources :clients
 
-  root 'clients#index'
+  root 'orders#new'
 
-  get '/clients/:id/history', to: 'clients#history', as: 'history'
+  get '/client/1/history', to: 'clients#history', as: 'history'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

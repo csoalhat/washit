@@ -1,0 +1,32 @@
+%h1 Listing orders
+
+%table
+  %tr
+    %th Pickup date
+    %th Pickup time
+    %th Return date
+    %th Return time
+    %th Instructions
+    %th Dry cleaning
+    %th Wash
+    %th Status
+    %th
+    
+
+
+
+  - current_user.client.orders.each do |order|
+    %tr
+      %td= order.pickup_date
+      %td= order.pickup_time
+      %td= order.return_date
+      %td= order.return_time
+      %td= order.instructions
+      %td= order.dry_cleaning
+      %td= order.wash
+      %td= order.pending
+      %td= link_to 'Show', order
+
+%br
+
+= link_to 'New Order', new_order_path

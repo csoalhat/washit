@@ -15,34 +15,44 @@
       %span
     #menu
       .pure-menu.pure-menu-open
-        %a.pure-menu-heading{href: "#"} Washit
+        %a.pure-menu-heading Washit
         %ul
+        - if current_user
           %li
-            %a{href: "#"} Order
+            %a=link_to 'Order', new_order_path
           %li
-            / %a=link_to 'Past Orders', history_path
+            %a=link_to 'Past Orders', history_path
           %li
             %a=link_to 'Price estimator'
+          - if current_user && current_user.role == "admin"
+            %li
+              %a=link_to 'Clients', clients_path
+            %li
+              %a=link_to 'Drivers', drivers_path
+            %li
+              %a=link_to 'Dry Cleaners', cleaners_path
+            %li
+              %a=link_to 'Orders', orders_path
 
     #main
       .header
         = yield
 
-  %footer
-  - if user_signed_in?
-    - if current_user.image? && current_user.name?
-      = image_tag current_user.image, class: "small-avatar"
-      %b= current_user.name
+    %footer
+    - if user_signed_in?
+      - if current_user.image? && current_user.name?
+        = image_tag current_user.image, class: "small-avatar"
+        %b= current_user.name
+      - else
+        Logged in as
+        %b= current_user.email
+      = link_to 'Edit Profile', edit_user_registration_path
+      \|
+      = link_to 'Logout',  destroy_user_session_path, method: :delete
     - else
-      Logged in as
-      %b= current_user.email
-    = link_to 'Edit Profile', edit_user_registration_path
-    \|
-    = link_to 'Logout',  destroy_user_session_path, method: :delete
-  - else
-    = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
-    \|
-    = link_to 'Sign up', new_user_registration_path
-    \|
-    = link_to 'Login', new_user_session_path
+      = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
+      \|
+      = link_to 'Sign up', new_user_registration_path
+      \|
+      = link_to 'Login', new_user_session_path
           

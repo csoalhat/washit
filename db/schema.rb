@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705161016) do
+ActiveRecord::Schema.define(version: 20140707104508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: true do |t|
+    t.string  "area"
+    t.integer "client_id"
+    t.integer "cleaner_id"
+    t.integer "driver_id"
+  end
+
+  add_index "areas", ["cleaner_id"], name: "index_areas_on_cleaner_id", using: :btree
+  add_index "areas", ["client_id"], name: "index_areas_on_client_id", using: :btree
+  add_index "areas", ["driver_id"], name: "index_areas_on_driver_id", using: :btree
+
+  create_table "available_slots", force: true do |t|
+    t.datetime "begin"
+    t.datetime "end"
+    t.boolean  "free"
+    t.integer  "client_id"
+    t.integer  "driver_id"
+    t.integer  "cleaner_id"
+    t.integer  "area_id"
+  end
 
   create_table "cleaners", force: true do |t|
     t.string   "area"
@@ -69,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140705161016) do
     t.integer  "driver_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   add_index "orders", ["cleaner_id"], name: "index_orders_on_cleaner_id", using: :btree
@@ -89,6 +111,7 @@ ActiveRecord::Schema.define(version: 20140705161016) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.string   "image"
