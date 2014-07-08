@@ -46,6 +46,7 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password

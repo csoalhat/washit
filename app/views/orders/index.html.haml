@@ -1,42 +1,36 @@
-%h1 Listing orders
-
-%table
-  %tr
-    %th Last Name
-    %th Address
-    %th Zip Code
-    %th Pickup date
-    %th Pickup time
-    %th Return date
-    %th Return time
-    %th Instructions
-    %th Dry cleaning
-    %th Wash
-    %th Status
-    %th Driver
-    %th DryCleaner
-    %th
-
-
-  - @orders.each do |order|
+%table.pure-table.pure-table-bordered
+  %thead
     %tr
-      / %td= order.client.first_name
-      / %td= order.client.home_address
-      / %td= order.client.home_address_zipcode
-      %td= order.pickup_date
-      %td= order.pickup_time
-      %td= order.return_date
-      %td= order.return_time
-      %td= order.instructions
-      %td= order.dry_cleaning
-      %td= order.wash
-      %td= order.status
-      %td= order.driver
-      %td= order.cleaner
-      
-      %td= link_to 'Show', order
-      %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Client
+      %th Address
+      %th Postcode
+      %th Pickup Time
+      %th Return Time
+      %th Instructions
+      %th Dry Cleaning
+      %th Wash
+      %th Driver
+      %th Dry Cleaner
+      %th Status
+      %th Edit/assign
+      %th Delete
+  %tbody
+    %tr
+      - @orders.each do |order|
+        / %td= order.client.first_name
+        / %td= order.client.home_address
+        / %td= order.client.home_address_zipcode
+        %td= order.pickup_time
+        %td= order.return_time
+        %td= order.instructions
+        %td= order.dry_cleaning
+        %td= order.wash
+        / %td= link_to order.driver.last_name, driver_path(order.driver)
+        %td= order.cleaner
+        %td= order.status
+        %td= link_to 'Show', order
+        %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }
+ 
 
-%br
 
-= link_to 'New Order', new_order_path
+
