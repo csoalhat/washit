@@ -32,10 +32,13 @@
   = @order.client.last_name
 %p
   %b Driver:
-/   = @order.driver.last_name
+   = @order.driver.last_name
 %p
   %b Dry Cleaning:
-/   = @order.cleaners.name
+   = @order.cleaners.name
+%p 
+  %b Status:
+  = @order.status
 
 
 

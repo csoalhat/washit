@@ -40,7 +40,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to new_order_path, notice: 'Client was successfully created.' }
+        format.html { redirect_to home_index_path, notice: 'Client was successfully created.' }
         format.json { render action: 'show', status: :created, location: @client }
       else
         format.html { render action: 'new' }
@@ -55,7 +55,7 @@ class ClientsController < ApplicationController
     @client = current_user.client.new(client_params)
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to new_order_path, notice: 'Client was successfully updated.' }
+        format.html { redirect_to home_index_path, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

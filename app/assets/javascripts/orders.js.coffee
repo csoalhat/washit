@@ -4,4 +4,8 @@
 
 $ ->
   $("#time-slots td").on "click", ->
-    console.log $(@).data()
+    date = $(@).data("day")
+    time = $(@).data("time").split("-")
+
+    $("#order_pickup_time").val "#{date} #{time[0]}"
+    $("#order_return_time").val "#{date} #{time[1]}"

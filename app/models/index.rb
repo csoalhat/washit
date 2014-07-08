@@ -1,2 +1,2 @@
-class Index < ActiveRecord::Base
+class Home < ActiveRecord::Base
 end

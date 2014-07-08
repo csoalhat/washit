@@ -16,13 +16,13 @@ Washit::Application.routes.draw do
 
   resources :orders
 
-  resources :index
+  resources :home
 
   resources :clients
 
-  root 'orders#new'
+  root 'home#index'
 
-  get '/client/1/history', to: 'clients#history', as: 'history'
+  get '/clients/history', to: 'clients#history', as: 'history'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

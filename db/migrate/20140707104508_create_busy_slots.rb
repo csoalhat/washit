@@ -1,6 +1,6 @@
-class CreateAvailableSlots < ActiveRecord::Migration
+class CreateBusySlots < ActiveRecord::Migration
   def change
-    create_table :available_slots do |t|
+    create_table :busy_slots do |t|
       t.datetime :begin
       t.datetime :end
       t.boolean :free

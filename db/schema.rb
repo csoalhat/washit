@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140707104508) do
   add_index "areas", ["client_id"], name: "index_areas_on_client_id", using: :btree
   add_index "areas", ["driver_id"], name: "index_areas_on_driver_id", using: :btree
 
-  create_table "available_slots", force: true do |t|
+  create_table "busy_slots", force: true do |t|
     t.datetime "begin"
     t.datetime "end"
     t.boolean  "free"
@@ -78,10 +78,8 @@ ActiveRecord::Schema.define(version: 20140707104508) do
 
   create_table "orders", force: true do |t|
     t.string   "address"
-    t.date     "pickup_date"
-    t.time     "pickup_time"
-    t.date     "return_date"
-    t.time     "return_time"
+    t.datetime "pickup_time"
+    t.datetime "return_time"
     t.string   "instructions"
     t.boolean  "dry_cleaning"
     t.boolean  "wash"

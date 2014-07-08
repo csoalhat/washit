@@ -20,7 +20,7 @@
       %td= client.home_address_zipcode
       %td= client.home_address_city
       %td= client.phone
-      %td= client.user.email
+      / %td= client.user.email
       %td= client.orders.count
 
       %td= link_to 'Show', client
@@ -30,3 +30,5 @@
 %br
 
 = link_to 'New Client', new_client_path
+
+

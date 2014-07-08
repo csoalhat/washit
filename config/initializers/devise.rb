@@ -233,7 +233,7 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, 
    ENV["WASHIT_APP_GOOGLE_CLIENT_ID"],
    ENV["WASHIT_APP_GOOGLE_CLIENT_SECRET"],
-   #scope: 'email, profile',
+   scope: 'email, profile',
    client_options: {
    image_aspect_ratio: "square",
    image_size: 30

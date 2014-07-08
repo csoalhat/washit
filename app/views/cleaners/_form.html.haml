@@ -1,25 +1,20 @@
-= form_for @cleaner do |f|
-  - if @cleaner.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@cleaner.errors.count, "error")} prohibited this cleaner from being saved:"
-      %ul
-        - @cleaner.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :area
-    = f.text_field :area
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :phone
-    = f.text_field :phone
-  .field
-    = f.label :address
-    = f.text_field :address
-  .field
-    = f.label :information
-    = f.text_field :information
-  .actions
-    = f.submit 'Save'
+%form.pure-form.pure-form-aligned
+  %fieldset
+    = form_for @cleaner do |f|
+      .pure-control-group
+        = f.label :area
+        = f.text_field :area
+      .pure-control-group
+        = f.label :name
+        = f.text_field :name
+      .pure-control-group
+        = f.label :phone
+        = f.text_field :phone
+      .pure-control-group
+        = f.label :address
+        = f.text_field :address
+      .pure-control-group
+        = f.label :information
+        = f.text_field :information
+      %br
+      %button.pure-button.pure-button-primary{type: "submit"} Submit

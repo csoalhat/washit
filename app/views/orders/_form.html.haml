@@ -1,24 +1,20 @@
-= form_for @order do |f|
-  .field
-    = f.label :pickup_date
-    = f.date_select :pickup_date
-  .field
-    = f.label :pickup_time
-    = f.time_select :pickup_time
-  .field
-    = f.label :return_date
-    = f.date_select :return_date
-  .field
-    = f.label :return_time
-    = f.time_select :return_time
-  .field
-    = f.label :instructions
-    = f.text_field :instructions
-  .field
-    = f.label :dry_cleaning
-    = f.check_box :dry_cleaning
-  .field
-    = f.label :wash
-    = f.check_box :wash
-  .actions
-    = f.submit 'Save'
+%form.pure-form.pure-form-aligned
+  %fieldset
+  = form_for @order do |f|
+    .pure-control-group
+      = f.label :pickup_time
+      = f.text_field :pickup_time
+    .pure-control-group
+      = f.label :return_time
+      = f.text_field :return_time
+    .pure-control-group
+      = f.label :instructions
+      = f.text_field :instructions
+    .pure-control-group
+      = f.label :dry_cleaning
+      = f.check_box :dry_cleaning
+    .pure-control-group
+      = f.label :wash
+      = f.check_box :wash
+    %br
+    %button.pure-button.pure-button-primary{type: "submit"} Submit
