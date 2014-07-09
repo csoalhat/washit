@@ -9,9 +9,46 @@ class UsersController < Devise::RegistrationsController
     super
 
     # then add our custom logic
-    @user.role = "user"
+    @user.role = "customer"
     @user.save
   end
+
+  def show
+    @user = if params[:user_id]
+      User.where("provider_id= ?", current_user.id)
+    elsif current_user
+      current_user
+    else
+      authenticate_user!
+    end
+  end
+
+  def dashboard
+    @user = if params[:user_id]
+      User.where("provider_id= ?", current_user.id)
+    else
+      authenticate_user!
+  end
+  end
+
+
+  # def edit
+  #   @user = current_user
+  # end
+
+  # def update
+  #   @user = current_user.new(user_params)
+  #   respond_to do |format|
+  #     if @user.update(user_params)
+  #       format.html { redirect_to home_index_path, notice: 'Client was successfully updated.' }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html { render action: 'edit' }
+  #       format.json { render json: @user.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
 
 private
 
@@ -21,10 +58,14 @@ private
     end
   end
 
+  def client_params
+    params.require(:user).permit(:first_name, :last_name, :address, :zipcode, :city, :phone, :email, :area, :default_provider)
+  end
+
 protected
 
-  def after_sign_up_path_for(resource)
-    new_client_path
-  end
+  # def after_sign_up_path_for(resource)
+  #   new_client_path
+  # end
 
 end

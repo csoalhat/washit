@@ -1,36 +1,49 @@
-%table.pure-table.pure-table-bordered
-  %thead
-    %tr
-      %th Client
-      %th Address
-      %th Postcode
-      %th Pickup Time
-      %th Return Time
-      %th Instructions
-      %th Dry Cleaning
-      %th Wash
-      %th Driver
-      %th Dry Cleaner
-      %th Status
-      %th Edit/assign
-      %th Delete
-  %tbody
-    %tr
-      - @orders.each do |order|
-        / %td= order.client.first_name
-        / %td= order.client.home_address
-        / %td= order.client.home_address_zipcode
-        %td= order.pickup_time
-        %td= order.return_time
-        %td= order.instructions
-        %td= order.dry_cleaning
-        %td= order.wash
-        / %td= link_to order.driver.last_name, driver_path(order.driver)
-        %td= order.cleaner
-        %td= order.status
-        %td= link_to 'Show', order
-        %td= link_to 'Destroy', order, :method => :delete, :data => { :confirm => 'Are you sure?' }
- 
+%p#notice= notice
+.radiobuttons
+  .btn-group#order-status-selection{"data-toggle" => "buttons"}
+    %label.btn.btn-primary.active
+      %input#option1.order-status-filter{checked: "checked", name: "options", type: "radio", data:{status: "pending"}}/
+      Pending Orders
+    %label.btn.btn-primary
+      %input#option2.order-status-filter{name: "options", type: "radio", data:{status: "processed"}}/
+      Processed Orders
+    %label.btn.btn-primary
+      %input#option3.order-status-filter{name: "options", type: "radio", data:{status: "archived"}}/
+      Archived Orders
+%br
+.row
+.row
+  .boxes
+    .col-xs-12
+      .large.box
+        .icon
+          .image
+            %span.glyphicon.glyphicon-tag.btn-lg.white
+          .info.clearfix
+            %h3.title See all Orders
+            - @orders.each do |order|
+              .xs.col-xs-4.order{data: {status: order.status}}
+                %h3 
+                  %span Customer:
+                  %span #{order.user.first_name} #{order.user.last_name}
+                %h5 Area:
+                #{order.user.area} 
+                %h5 Drop in:
+                #{order.pickup_day} #{order.pickup_time}
+                %h5 Pick in:
+                #{order.return_day} #{order.return_time}
+                / should be javascript option only for provider
+                %h5
+                  Status:
+                %p=order.status
+                %p= link_to 'Change status', order, :class => "yolo"
+                / - unless order.price ?
+                %h5
+                  %span Price: $
+                  %span 
+                    = order.price
+                %p= link_to 'Add Price', order
+
 
 
 

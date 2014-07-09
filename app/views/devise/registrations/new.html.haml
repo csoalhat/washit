@@ -1,0 +1,41 @@
+%h2 Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  %div
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true
+  %div
+    = f.label :password
+    %br/
+    = f.password_field :password, autocomplete: "off"
+  %div
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "off"
+    %div
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name
+  %div
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name
+  %div
+    = f.label :address
+    %br/
+    = f.text_field :address
+  %div
+    = f.label :zipcode
+    %br/
+    = f.text_field :zipcode
+  %div
+    = f.label :phone
+    %br/
+    = f.text_field :phone
+  %div
+    = f.label :area
+    %br/
+    = f.collection_select(:default_provider_id, User.where("role='provider'"), :id, :first_name)
+  %div= f.submit "Sign up"
+= render "devise/shared/links"

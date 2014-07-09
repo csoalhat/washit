@@ -5,24 +5,36 @@ Washit::Application.routes.draw do
 
  devise_scope :user do
     get "login", :to => "devise/sessions#new"
-    resources :users,  only: [:index]
+    resources :users
   end
 
   # resources :users 
 
-  resources :cleaners
+  # resources :cleaners
 
-  resources :drivers
+  # resources :drivers
 
   resources :orders
 
-  resources :home
+  match "/yolo/:id" => "orders#update", :via => :post, :as => :update_order
 
-  resources :clients
+  get   '/orders/status/:status'   => 'orders#index', constraint: { status: /processed|pending|archived/ }
+  get   '/orders/dashboard'   => 'orders#dashboard'
+  
+  resources :home do
+   collection do
+     get :index
+     get :prices
+     get :map
+   end
+ end
+
+
+  # resources :clients
 
   root 'home#index'
 
-  get '/clients/history', to: 'clients#history', as: 'history'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

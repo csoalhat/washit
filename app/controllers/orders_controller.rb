@@ -4,7 +4,27 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders =if params[:status]
+      Order.where(status: params[:status])
+    elsif current_user.role == "provider"
+      Order.where("provider_id= ?", current_user.id)
+      # Order.where("provider_id= ? AND status= ?", current_user.id, "pending")
+    else
+      current_user.orders
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json  { render :json => @orders.to_json }
+    end
+  end
+
+  def some_other_view
+    # create route (member or collection)
+    # write this controller action
+    # write a view template that displays orders
+    # enhance with JS if required
+    # @orders = Order.where(something..)
   end
 
   # GET /orders/1
@@ -15,6 +35,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+
   end
 
   # GET /orders/1/edit
@@ -24,11 +45,12 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = current_user.client.orders.new(order_params)
-
+    @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    @order.provider = current_user.default_provider
     respond_to do |format|
       if @order.save
-        format.html { redirect_to history_path, notice: 'Order was successfully created.' }
+        format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
         format.html { render action: 'new' }
@@ -42,8 +64,8 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to history_path, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to orders_path, notice: 'Order was successfully updated.' }
+        format.json { render json:@order }
       else
         format.html { render action: 'edit' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -69,6 +91,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:address, :pickup_date, :pickup_time, :return_date, :return_time, :instructions, :dry_cleaning, :wash, :clients_id)
+      params.require(:order).permit(:address, :pickup_time, :return_time, :instructions, :dry_cleaning, :wash, :client_id)
     end
 end

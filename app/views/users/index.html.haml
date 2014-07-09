@@ -1,5 +1,28 @@
-= link_to 'Sign up', new_user_registration_path
-\|
-= link_to 'Login', new_user_session_path
-\|
-= link_to 'Sign up with Google', user_omniauth_authorize_path(:google_oauth2)
+%h1 Dashboard - Listing Users
+%table
+  %tr
+    %th First name
+    %th Last name
+    %th Role
+    %th Phone
+    %th Email
+    %th Orders
+
+
+
+  - @users.each do |user|
+    %tr
+      %td= user.first_name
+      %td= user.last_name
+      %td= user.role
+      %td= user.phone
+      %td= user.email
+      %td= user.orders.count
+
+      %td= link_to 'Show', user
+      %td= link_to 'Edit', edit_user_path(user)
+      %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New User', new_user_path

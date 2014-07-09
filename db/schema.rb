@@ -16,84 +16,31 @@ ActiveRecord::Schema.define(version: 20140707104508) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "areas", force: true do |t|
-    t.string  "area"
-    t.integer "client_id"
-    t.integer "cleaner_id"
-    t.integer "driver_id"
-  end
-
-  add_index "areas", ["cleaner_id"], name: "index_areas_on_cleaner_id", using: :btree
-  add_index "areas", ["client_id"], name: "index_areas_on_client_id", using: :btree
-  add_index "areas", ["driver_id"], name: "index_areas_on_driver_id", using: :btree
-
   create_table "busy_slots", force: true do |t|
     t.datetime "begin"
     t.datetime "end"
     t.boolean  "free"
-    t.integer  "client_id"
-    t.integer  "driver_id"
-    t.integer  "cleaner_id"
+    t.integer  "user_id"
     t.integer  "area_id"
   end
 
-  create_table "cleaners", force: true do |t|
-    t.string   "area"
-    t.string   "name"
-    t.string   "phone"
-    t.string   "address"
-    t.string   "information"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "clients", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "home_address"
-    t.string   "home_address_zipcode"
-    t.string   "home_address_city"
-    t.string   "work_address"
-    t.string   "work_address_zipcode"
-    t.string   "work_address_city"
-    t.string   "phone"
-    t.string   "email"
+  create_table "orders", force: true do |t|
+    t.string   "pickup_time"
+    t.date     "pickup_day"
+    t.date     "return_day"
+    t.string   "return_time"
+    t.string   "instructions"
+    t.boolean  "dry_cleaning"
+    t.boolean  "wash"
+    t.string   "status",       default: "pending"
+    t.integer  "price"
+    t.integer  "provider_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "clients", ["user_id"], name: "index_clients_on_user_id", using: :btree
-
-  create_table "drivers", force: true do |t|
-    t.string   "area"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "phone"
-    t.string   "car"
-    t.string   "availability"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "orders", force: true do |t|
-    t.string   "address"
-    t.datetime "pickup_time"
-    t.datetime "return_time"
-    t.string   "instructions"
-    t.boolean  "dry_cleaning"
-    t.boolean  "wash"
-    t.integer  "client_id"
-    t.integer  "cleaner_id"
-    t.integer  "driver_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "status"
-  end
-
-  add_index "orders", ["cleaner_id"], name: "index_orders_on_cleaner_id", using: :btree
-  add_index "orders", ["client_id"], name: "index_orders_on_client_id", using: :btree
-  add_index "orders", ["driver_id"], name: "index_orders_on_driver_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -109,6 +56,16 @@ ActiveRecord::Schema.define(version: 20140707104508) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "zipcode"
+    t.string   "city"
+    t.string   "phone"
+    t.string   "area"
+    t.string   "lat"
+    t.string   "lng"
+    t.integer  "default_provider_id"
     t.string   "provider"
     t.string   "uid"
     t.string   "name"

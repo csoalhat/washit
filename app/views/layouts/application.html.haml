@@ -3,8 +3,8 @@
   %head
     %title Washit
     %link{href: "http://yui.yahooapis.com/pure/0.5.0/pure-min.css", rel: "stylesheet"}/
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
@@ -15,24 +15,24 @@
       %span
     #menu
       .pure-menu.pure-menu-open
-        %a.pure-menu-heading Washit
+        %a.pure-menu-heading=link_to 'WASHIT', root_path
         %ul
-        - if current_user
+        - if current_user && current_user.role == "customer"
           %li
             %a=link_to 'Order', new_order_path
           %li
-            %a=link_to 'Past Orders', history_path
+            %a=link_to 'Past Orders', orders_path
           %li
-            %a=link_to 'Price estimator'
-          - if current_user && current_user.role == "admin"
-            %li
-              %a=link_to 'Clients', clients_path
-            %li
-              %a=link_to 'Drivers', drivers_path
-            %li
-              %a=link_to 'Dry Cleaners', cleaners_path
-            %li
-              %a=link_to 'Orders', orders_path
+            %a=link_to 'Prices', prices_home_index_path 
+        - if current_user && current_user.role == "provider"
+          %li
+            %a=link_to 'Dashboard', root_path
+          %li
+            %a=link_to 'Clients', users_path
+          %li
+            %a=link_to 'Orders', orders_path
+          %li
+            %a=link_to 'Daily Orders', map_home_index_path
 
     #main
       #signin

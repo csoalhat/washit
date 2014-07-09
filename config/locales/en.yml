@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  devise:
+    users:
+      user:
+        signed_up: "Well done! you've signed up"
+
+# add:
+# en.devise.users.user.updated

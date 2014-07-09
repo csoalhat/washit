@@ -1,17 +1,20 @@
 .left_aligned
   %h1 New order
 
-  - week_days = (Date.today...(Date.today + 7.days))
-  %table.table.table-bordered#time-slots
-    %tbody
-      %tr
-        - week_days.to_a.each do |week_date|
-          %td
-            %em= week_date.to_s(:short)
-      - time_slots_for_a_day.each do |time_slot|
-        %tr
-          - week_days.each do |day|
-            %td{data:{day:day, time:time_slot}}= time_slot
+  / - week_days = (Date.today...(Date.today + 7.days))
+  / - slots = Order.busy_slots(Date.today, Date.today + 7.days) 
+  / = slots.inspect
+  / %table.table.table-bordered#time-slots
+  /   %tbody
+  /     %tr
+  /       - week_days.to_a.each do |week_date|
+  /         %td
+  /           %em= week_date.to_s(:short)
+  /     - time_slots_for_a_day(slots).each do |time_slot|
+  /       %tr
+  /         - week_days.each do |day|
+
+  /           %td{data:{day:day, time:time_slot}}= time_slot
 
 
 

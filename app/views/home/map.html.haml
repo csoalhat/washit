@@ -1,0 +1,13 @@
+.btn-group#order-status-selection{"data-toggle" => "buttons"}
+  %label.btn.btn-primary.active
+    %input#morning{checked: "checked", name: "options", type: "radio", data:{status: "AM"}}/
+    Morning
+  %label.btn.btn-primary
+    %input#afternoon{name: "options", type: "radio", data:{status: "PM"}}/
+    Afternoon
+
+%p Map
+
+/ %p= @user.orders.where(:pickup_day = Today || :return_day = Today)
+/       =@user.orders.where(:pickup_time = "AM")
+/       =@user.orders.where(:return_time = "PM")

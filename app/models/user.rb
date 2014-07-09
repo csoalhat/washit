@@ -3,10 +3,12 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable,
   :validatable, :timeoutable, :omniauthable , :omniauth_providers => [:google_oauth2]
 
-  has_one :client
+  has_many :orders
+  has_many :busy_slots
 
-  after_create :create_client
+  belongs_to :default_provider, class_name: "User", foreign_key: "default_provider_id"
 
+  # after_create :get_coords(address)
 
   def self.find_for_google_oauth2(auth, signed_in_user=nil)
     if user = signed_in_user || User.find_by_email(auth.info.email)

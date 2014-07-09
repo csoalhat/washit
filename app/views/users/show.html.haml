@@ -1,0 +1,18 @@
+%p#notice= notice
+.row
+  .boxes
+    .col-xs-12
+      .large.box
+        .icon
+          .image
+            %span.glyphicon.glyphicon-plus.btn-lg.white
+          .info
+            %h3.title= @user.role
+            %p
+              %p= "#{@user.first_name} #{@user.last_name}"
+              %p= "Address: #{@user.address}, #{@user.zipcode}"
+              %p= "Phone: #{@user.phone}"
+              %p= "Email: #{@user.email}"
+              
+          .more
+            %a= link_to 'Edit', edit_user_path(@user)

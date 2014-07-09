@@ -1,45 +1,22 @@
 %p#notice= notice
-
-%p
-  %b Address:
-  = @order.client.home_address
-%p
-  %b Postcode:
-  = @order.client.home_address_zipcode
-%p
-  %b Pickup date:
-  = @order.pickup_date
-%p
-  %b Pickup time:
-  = @order.pickup_time
-%p
-  %b Return date:
-  = @order.return_date
-%p
-  %b Return time:
-  = @order.return_time
-%p
-  %b Instructions:
-  = @order.instructions
-%p
-  %b Dry cleaning:
-  = @order.dry_cleaning
-%p
-  %b Wash:
-  = @order.wash
-%p
-  %b Client:
-  = @order.client.last_name
-%p
-  %b Driver:
-   = @order.driver.last_name
-%p
-  %b Dry Cleaning:
-   = @order.cleaners.name
-%p 
-  %b Status:
-  = @order.status
-
-
-
-= link_to 'Orders History', history_path
+.row
+  .boxes
+    .col-xs-12
+      .large.box
+        .icon
+          .image
+            %span.glyphicon.glyphicon-tag.btn-lg.white
+          .info
+            %h3.title Order
+            %p
+              %h3= "#{@order.user.first_name} #{@order.user.last_name}"
+              %h4= "Address: #{@order.user.address} #{@order.user.zipcode}"
+              %h5= "The pickup time is: #{@order.pickup_day} during the #{@pickup_time}"
+              %h5= "The dropoff time is: #{@order.return_day} during the #{@return_time}"
+              %h5= "Special instructions: #{@order.instructions}"
+              %h5= "Drycleaning? #{@order.dry_cleaning} - Wash and fold only? #{@order.wash}"
+              %h5= "Status: #{@order.status}"
+              %h5= "Price: #{@order.price}"
+          .more
+            %a=link_to 'Go back to orders', orders_path
+    

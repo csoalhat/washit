@@ -4,9 +4,7 @@ class CreateBusySlots < ActiveRecord::Migration
       t.datetime :begin
       t.datetime :end
       t.boolean :free
-      t.integer :client_id
-      t.integer :driver_id
-      t.integer :cleaner_id
+      t.integer :user_id
       t.integer :area_id
     end
   end

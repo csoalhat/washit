@@ -1,12 +1,13 @@
 %form.pure-form.pure-form-aligned
   %fieldset
-  = form_for @client do |f|
-    - if @client.errors.any?
+  = form_for @user do |f|
+    - if @user.errors.any?
       #error_explanation
-        %h2= "#{pluralize(@client.errors.count, "error")} prohibited this client from being saved:"
+        %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
         %ul
-          - @client.errors.full_messages.each do |msg|
+          - @user.errors.full_messages.each do |msg|
             %li= msg
+
     .pure-control-group
       = f.label :first_name
       = f.text_field :first_name
@@ -14,13 +15,16 @@
       = f.label :last_name
       = f.text_field :last_name
     .pure-control-group
-      = f.label :home_address
-      = f.text_field :home_address
+      = f.label :address
+      = f.text_field :address
     .pure-control-group
-      = f.label :home_address_zipcode
-      = f.text_field :home_address_zipcode
+      = f.label :zipcode
+      = f.text_field :zipcode
     .pure-control-group
       = f.label :phone
       = f.text_field :phone
+    .pure-control-group
+      = f.label :area 
+      = f.text_field :area
     %br
     %button.pure-button.pure-button-primary{type: "submit"} Submit

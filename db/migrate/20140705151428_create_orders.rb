@@ -1,15 +1,17 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
-      t.string :address
-      t.datetime :pickup_time
-      t.datetime :return_time
+      t.string :pickup_time
+      t.date :pickup_day
+      t.date :return_day
+      t.string :return_time
       t.string :instructions
       t.boolean :dry_cleaning
       t.boolean :wash
-      t.references :client, index: true
-      t.references :cleaner, index: true
-      t.references :driver, index: true
+      t.string :status, default: "pending"
+      t.integer :price
+      t.integer :provider_id
+      t.references :user, index: true
 
       t.timestamps
     end
