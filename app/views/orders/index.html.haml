@@ -21,28 +21,31 @@
             %span.glyphicon.glyphicon-tag.btn-lg.white
           .info.clearfix
             %h3.title See all Orders
-            - @orders.each do |order|
+            - @orders.each_with_index do |order, index|
               .xs.col-xs-4.order{data: {status: order.status}}
+                %h5 Order #{index + 1}
                 %h3 
-                  %span Customer:
-                  %span #{order.user.first_name} #{order.user.last_name}
-                %h5 Area:
-                #{order.user.area} 
-                %h5 Drop in:
-                #{order.pickup_day} #{order.pickup_time}
-                %h5 Pick in:
-                #{order.return_day} #{order.return_time}
+                  - if current_user && current_user.role == "provider"
+                    %span #{order.user.first_name} #{order.user.last_name}
+                %h5 
+                  %span Drop in:
+                  %span #{order.pickup_day} #{order.pickup_time}
+                %h5 
+                  %span Return:
+                  %span #{order.return_day} #{order.return_time}
                 / should be javascript option only for provider
                 %h5
-                  Status:
-                %p=order.status
-                %p= link_to 'Change status', order, :class => "yolo"
-                / - unless order.price ?
-                %h5
-                  %span Price: $
-                  %span 
-                    = order.price
-                %p= link_to 'Add Price', order
+                  %span Status:
+                  %span
+                  %i=order.status
+                  - if current_user && current_user.role == "provider"
+                    %p= link_to 'Change status', order, :class => "yolo"
+                  %h5 
+                    %span Price: 
+                    %span 
+                      = order.price
+                  - if current_user && current_user.role == "provider"
+                    %p= link_to 'Add Price', order
 
 
 

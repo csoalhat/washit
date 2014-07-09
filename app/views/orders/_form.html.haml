@@ -3,13 +3,13 @@
 = form_for @order do |f|
   .pure-control-group
     = f.label :pickup_day
-    = f.date_field :pickup_day
+    = f.date_select :pickup_day
   .pure-control-group
     = f.label :pickup_time
     = f.select :pickup_time, options_for_select([["AM", "AM"], ["PM", "PM"]])
   .pure-control-group
     = f.label :return_day
-    = f.date_field :return_day
+    = f.date_select :return_day
   .pure-control-group
     = f.label :return_time
     = f.select :return_time, options_for_select([["AM", "AM"], ["PM", "PM"]])

@@ -9,7 +9,7 @@ class CreateOrders < ActiveRecord::Migration
       t.boolean :dry_cleaning
       t.boolean :wash
       t.string :status, default: "pending"
-      t.integer :price
+      t.string :price, index: "processing"
       t.integer :provider_id
       t.references :user, index: true
 

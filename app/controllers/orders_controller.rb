@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    @order.provider = current_user.default_provider
+    @order.provider_id = current_user.default_provider_id
     respond_to do |format|
       if @order.save
         format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
@@ -91,6 +91,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:address, :pickup_time, :return_time, :instructions, :dry_cleaning, :wash, :client_id)
+      params.require(:order).permit(:address, :pickup_day, :return_day, :pickup_time, :return_time, :instructions, :dry_cleaning, :wash, :user_id, :provider_id)
     end
 end

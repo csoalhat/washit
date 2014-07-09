@@ -83,3 +83,49 @@
                   %a=link_to 'Customers', users_path 
       
             .space
+- if !current_user
+  .container
+    .row
+      .boxes
+        .col-xs-10.col-sm-5.col-lg-3
+          .box
+            .icon
+              .image
+                %span.glyphicon.glyphicon-plus.btn-lg.white
+              .info
+                %h3.title Sign Up
+                %p
+                  Sign up and never worry about dry cleaning again!
+                .more
+                  %a=link_to 'Sign Up', new_user_registration_path
+
+            .space
+        .col-xs-10.col-sm-5.col-lg-3
+          .box
+            .icon
+              .image
+                %span.glyphicon.glyphicon-envelope.btn-lg.white
+              .info
+                %h3.title Login with Google
+                %p
+                  Login with your Google account
+                .more
+                  %a=link_to 'Login with Google', user_omniauth_authorize_path(:google_oauth2)
+            .space
+        .col-xs-10.col-sm-5.col-lg-3
+          .box
+            .icon
+              .image
+                %span.glyphicon.glyphicon-user.btn-lg.white
+              .info
+                %h3.title Login
+                %p
+                  Make new orders, see your pending orders
+                .more
+                  %a=link_to 'Login', new_user_session_path
+      
+            .space
+
+
+    
+

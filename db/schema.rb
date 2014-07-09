@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140707104508) do
     t.boolean  "dry_cleaning"
     t.boolean  "wash"
     t.string   "status",       default: "pending"
-    t.integer  "price"
+    t.string   "price"
     t.integer  "provider_id"
     t.integer  "user_id"
     t.datetime "created_at"

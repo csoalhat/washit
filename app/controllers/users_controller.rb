@@ -59,7 +59,7 @@ private
   end
 
   def client_params
-    params.require(:user).permit(:first_name, :last_name, :address, :zipcode, :city, :phone, :email, :area, :default_provider)
+    params.require(:user).permit(:user_id, :password, :first_name, :last_name, :address, :zipcode, :city, :phone, :email, :area, :default_provider_id)
   end
 
 protected
