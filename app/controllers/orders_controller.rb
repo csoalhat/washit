@@ -4,10 +4,11 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders =if params[:status]
-      Order.where(status: params[:status])
-    elsif current_user.role == "provider"
+    @orders =if current_user.role == "provider"
       Order.where("provider_id= ?", current_user.id)
+    elsif 
+       params[:status]
+      Order.where(status: params[:status])
       # Order.where("provider_id= ? AND status= ?", current_user.id, "pending")
     else
       current_user.orders
@@ -19,7 +20,9 @@ class OrdersController < ApplicationController
     end
   end
 
-  def some_other_view
+  def dashboard
+    @orders = Order.where("pickup_day= ?", Date.today) || Order.where("return_day= ?", Date.today)
+    @orders = @orders.where("provider_id= ?", current_user.id)
     # create route (member or collection)
     # write this controller action
     # write a view template that displays orders
@@ -91,6 +94,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:address, :pickup_day, :return_day, :pickup_time, :return_time, :instructions, :dry_cleaning, :wash, :user_id, :provider_id)
+      params.require(:order).permit(:address, :price, :pickup_day, :return_day, :pickup_time, :return_time, :instructions, :dry_cleaning, :wash, :user_id, :provider_id, :status)
     end
 end

@@ -6,6 +6,7 @@
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCRcbP5XDgjl6ESmSrSDpSNdGwShDgMe8M&sensor=false", type: "text/javascript"}
 
   %body
   #layout
@@ -26,13 +27,13 @@
             %a=link_to 'Prices', prices_home_index_path 
         - if current_user && current_user.role == "provider"
           %li
-            %a=link_to 'Dashboard', root_path
+            %a=link_to 'Dashboard', dashboard_orders_path
           %li
             %a=link_to 'Clients', users_path
           %li
             %a=link_to 'Orders', orders_path
           %li
-            %a=link_to 'Daily Orders', map_home_index_path
+            %a=link_to 'Drivers Info', map_home_index_path
 
     #main
       #signin

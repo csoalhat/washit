@@ -1,28 +1,20 @@
-%h1 Dashboard - Listing Users
-%table
-  %tr
-    %th First name
-    %th Last name
-    %th Role
-    %th Phone
-    %th Email
-    %th Orders
 
-
-
-  - @users.each do |user|
-    %tr
-      %td= user.first_name
-      %td= user.last_name
-      %td= user.role
-      %td= user.phone
-      %td= user.email
-      %td= user.orders.count
-
-      %td= link_to 'Show', user
-      %td= link_to 'Edit', edit_user_path(user)
-      %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New User', new_user_path
+.row
+  .boxes
+    .col-xs-12
+      .large.box
+        .icon
+          .image
+            %span.glyphicon.glyphicon-tag.btn-lg.white
+          .info.clearfix
+            %h3.title Customers
+            - @users.each_with_index do |user, index|
+              .xs.col-xs-4
+                %h2 Client #{index + 1} 
+                %h5
+                  %span Name:
+                  %span #{user.first_name} #{user.last_name}
+                %h5 
+                  %span Contact Details:
+                  %span #{user.email} 
+                  %span #{user.phone}

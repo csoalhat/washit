@@ -23,17 +23,18 @@
             %h3.title See all Orders
             - @orders.each_with_index do |order, index|
               .xs.col-xs-4.order{data: {status: order.status}}
-                %h5 Order #{index + 1}
+                %h2 Order #{index + 1}
                 %h3 
                   - if current_user && current_user.role == "provider"
                     %span #{order.user.first_name} #{order.user.last_name}
                 %h5 
-                  %span Drop in:
-                  %span #{order.pickup_day} #{order.pickup_time}
-                %h5 
-                  %span Return:
-                  %span #{order.return_day} #{order.return_time}
-                / should be javascript option only for provider
+                  %span Information:
+                  %span #{order.instructions} 
+                  %p
+                  - if order.dry_cleaning == true 
+                    %p Dry Cleaning
+                  - if order.wash == true
+                    %p Wash and Fold.
                 %h5
                   %span Status:
                   %span
@@ -41,11 +42,20 @@
                   - if current_user && current_user.role == "provider"
                     %p= link_to 'Change status', order, :class => "yolo"
                   %h5 
-                    %span Price: 
-                    %span 
-                      = order.price
-                  - if current_user && current_user.role == "provider"
-                    %p= link_to 'Add Price', order
+                %h5 
+                  %span Drop in:
+                  %span #{order.pickup_day} #{order.pickup_time}
+                %h5
+                  %span Return:
+                  %span #{order.return_day} #{order.return_time}
+                / should be javascript option only for provider
+                %h5
+                  %span Price: 
+                  %span 
+                    = order.price
+                - if current_user && current_user.role == "provider"
+                  %p= link_to 'Add Price', edit_order_path(order)
+
 
 
 

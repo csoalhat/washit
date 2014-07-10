@@ -36,6 +36,6 @@
   %div
     = f.label :area
     %br/
-    = f.collection_select(:default_provider, User.where("role = ?", "provider"), :id, :first_name)
+    = f.collection_select(:default_provider_id, User.where("role = ?", "provider"), :id, :first_name)
   %div= f.submit "Sign up"
 = render "devise/shared/links"

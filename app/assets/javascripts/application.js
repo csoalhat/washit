@@ -33,22 +33,22 @@ $(document).ready(function(){
     if (currentStatus == 'pending') {
       var data = 'processed';
     } else if (currentStatus == 'processed') {
-      var data = 'completed';
+      var data = 'archived';
     } else {
       var data = 'pending';
     }
 
     // Let us know AJAX has worked
     function ajaxSuccess() { 
-      console.log('great success')
+      location.reload();
     };
 
     // Make the AJAX call to the orders update action
     $.ajax({
-      url:  '/yolo/' + orderId,
+      url:  '/orders/' + orderId,
       dataType: 'json', 
-      type: 'POST', 
-      data: data,
+      type: 'PUT', 
+      data: {order:{status:data}},
       success: function() {
         ajaxSuccess();
         currentStatus.text(data);

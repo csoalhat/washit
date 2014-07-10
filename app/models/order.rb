@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :user
-  belongs_to :default_provider, class_name: "User"
+  belongs_to :default_provider_id, class_name: "User", foreign_key: "default_provider_id"
 
   def self.busy_slots(s,e)
     busy = find_by_sql <<-SQL

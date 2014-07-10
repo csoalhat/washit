@@ -6,8 +6,12 @@
           .image
             %span.glyphicon.glyphicon-tag.btn-lg.white
           .info
-            %h3.title Current orders
-            Days of the week
-            current_user.orders
+            %h3.title Today's Orders
+            - @orders.each do |order|
+              %b= order.pickup_time
+              %b= order.user.address
+              = order.user.first_name
+              %br
+
 
 

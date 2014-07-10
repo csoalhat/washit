@@ -8,6 +8,4 @@
 
 %p Map
 
-/ %p= @user.orders.where(:pickup_day = Today || :return_day = Today)
-/       =@user.orders.where(:pickup_time = "AM")
-/       =@user.orders.where(:return_time = "PM")
+#map_canvas

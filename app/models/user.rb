@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :busy_slots
 
-  belongs_to :default_provider, class_name: "User", foreign_key: "default_provider_id"
+  belongs_to :default_provider, class_name: "User"
 
   # after_create :get_coords(address)
 

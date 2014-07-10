@@ -18,12 +18,18 @@ prov3 = User.create(role: "provider", email: "south@provider.com", password: "pr
 prov4 = User.create(role: "provider", email: "west@provider.com", password: "provider", first_name: "West London", last_name: "DryCleaning", address: "55 Barrowgate Rd", zipcode: "W4 4QT", area: "West London")
 prov5 = User.create(role: "provider", email: "east@provider.com", password: "provider", first_name: "East London", last_name: "DryCleaning", address: "31 Brady St", zipcode: "E1 5DJ", area: "East London")
 
-order1 = Order.create(pickup_time: "AM", pickup_day: Date.new(2014, 7, 7), return_day: Date.new(2014, 7, 7), return_time: "PM", instructions: "Ring the bell downstairs", wash: true, dry_cleaning: false, price: 30, user_id: 1, default_provider_id: "North London")
-order2 = Order.create(pickup_time: "PM", pickup_day: Date.new(2014, 7, 8), return_day: Date.new(2014, 7, 9), return_time: "PM", instructions: "Be very careful with the dress. Everything else is wash only.", wash: true, dry_cleaning: true, user_id: 1, default_provider_id: "North London")
-order3 = Order.create(pickup_time: "AM", pickup_day: Date.new(2014, 7, 7), return_day: Date.new(2014, 7, 8), return_time: "PM", instructions: "Super urgent. Thank you!", wash: false, dry_cleaning: true, user_id: 2)
+# order1 = Order.create(pickup_time: "AM", pickup_day: Date.new(2014, 7, 10), return_day: Date.new(2014, 7, 10), return_time: "PM", instructions: "Stop losing my socks.", wash: true, dry_cleaning: false, price: 30, user_id: 1, provider_id: 2, status:"archived")
+# order2 = Order.create(pickup_time: "PM", pickup_day: Date.new(2014, 7, 11), return_day: Date.new(2014, 7, 11), return_time: "PM", instructions: "Be very careful with the dress. Everything else is wash only.", wash: true, dry_cleaning: true, user_id: 1, provider_id: 2, status: "pending")
+# order3 = Order.create(pickup_time: "AM", pickup_day: Date.new(2014, 7, 10), return_day: Date.new(2014, 7, 11), return_time: "PM", instructions: "Super urgent. Thank you!", wash: false, dry_cleaning: true, user_id: 2, provider_id: 2, status: "processed")
+# order4 = Order.create(pickup_time: "PM", pickup_day: Date.new(2014, 7, 10), return_day: Date.new(2014, 7, 12), return_time: "PM", instructions: "Can you remove the lipstick before my girlfriend sees it?", wash: false, dry_cleaning: true, user_id: 2, provider_id: 2, status: "pending")
+# order5 = Order.create(pickup_time: "PM", pickup_day: Date.new(2014, 7, 11), return_day: Date.new(2014, 7, 12), return_time: "AM", instructions: "You guys rock!", wash: true, dry_cleaning: false, user_id: 3, provider_id: 1, status: "processed")
+# order6 = Order.create(pickup_time: "PM", pickup_day: Date.new(2014, 7, 12), return_day: Date.new(2014, 7, 13), return_time: "AM", instructions: "Thank you", wash: true, dry_cleaning: true, user_id: 4, provider_id: 2, status: "pending")
 
-cust1 = User.create(role: "customer", email: "gerry@gerry.com", password: "password", first_name: "Gerry", last_name: "Mathe", address: "La Gym", zipcode: "NW6", area: "North London")
-cust2 = User.create(role: "customer", email:"csoalhat@gmail.com", password: "password", first_name: "Caroline", last_name: "Soalhat", address: "4 Lancaster Grove", zipcode: "NW3", area: "North London")
+# cust1 = User.create(role: "customer", email: "gerry@gerry.com", password: "password", first_name: "Gerry", last_name: "Mathe", address: "La Gym", zipcode: "NW6")
+# cust2 = User.create(role: "customer", email:"csoalhat@gmail.com", password: "password", first_name: "Caroline", last_name: "Soalhat", address: "4 Lancaster Grove", zipcode: "NW3")
+# cust3 = User.create(role: "customer", email:"jon@jon.com", password: "password", first_name: "Jon", last_name: "Chambers", address: "Boris Bike", zipcode: "EC1")
+# cust4 = User.create(role: "customer", email:"julien@julien.com", password: "password", first_name: "Julien", last_name: "Deslangles", address: "Back Hill", zipcode: "EC1")
+
 
 
 

@@ -1,6 +1,6 @@
 Washit::Application.routes.draw do
 
-  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout'}, :controllers => {:registrations => 'users',
+  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout'}, :controllers => {:registrations => 'registrations',
  omniauth_callbacks: "omniauth_callbacks"}
 
  devise_scope :user do
@@ -14,12 +14,13 @@ Washit::Application.routes.draw do
 
   # resources :drivers
 
-  resources :orders
+  resources :orders do
 
-  match "/yolo/:id" => "orders#update", :via => :post, :as => :update_order
-
-  get   '/orders/status/:status'   => 'orders#index', constraint: { status: /processed|pending|archived/ }
-  get   '/orders/dashboard'   => 'orders#dashboard'
+    get   '/orders/status/:status'   => 'orders#index', constraint: { status: /processed|pending|archived/ }
+    collection do 
+      get  :dashboard
+    end
+  end
   
   resources :home do
    collection do

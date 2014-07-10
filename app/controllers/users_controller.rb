@@ -1,7 +1,7 @@
 class UsersController < Devise::RegistrationsController
 
   def index
-    @users = User.all
+    @users = User.where("default_provider_id= ?", current_user.id)
   end
 
   def create
@@ -54,18 +54,18 @@ private
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:users) do |u|
-      u.permit(:name, :email, :image, :password, :password_confirmation, :uid, :provider)
+      u.permit(:name, :email, :image, :password, :password_confirmation, :uid, :provider, :first_name, :last_name, :address, :role, :zipcode, :city, :phone, :email, :area, :default_provider_id)
     end
   end
 
   def client_params
-    params.require(:user).permit(:user_id, :password, :first_name, :last_name, :address, :zipcode, :city, :phone, :email, :area, :default_provider_id)
+    params.require(:user).permit(:name, :email, :image, :password, :password_confirmation, :uid, :provider, :first_name, :last_name, :address, :role, :zipcode, :city, :phone, :email, :area, :default_provider_id)
   end
 
 protected
 
-  # def after_sign_up_path_for(resource)
-  #   new_client_path
-  # end
+  def after_sign_up_path_for(resource)
+    root_path
+  end
 
 end
