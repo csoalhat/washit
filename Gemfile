@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.1.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.5'
@@ -45,6 +46,10 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password
