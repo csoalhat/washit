@@ -397,4 +397,4 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 .btn-primary {
   color: #1F8DD6;
 }
-@import "bootstrap"
+@import "bootstrap";
