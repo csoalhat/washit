@@ -19,6 +19,7 @@ Washit::Application.routes.draw do
     get   '/orders/status/:status'   => 'orders#index', constraint: { status: /processed|pending|archived/ }
     collection do 
       get  :dashboard
+      get :driver_route
     end
   end
   

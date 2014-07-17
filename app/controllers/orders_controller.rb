@@ -23,11 +23,17 @@ class OrdersController < ApplicationController
   def dashboard
     @orders = Order.where("pickup_day= ?", Date.today) || Order.where("return_day= ?", Date.today)
     @orders = @orders.where("provider_id= ?", current_user.id)
+
     # create route (member or collection)
     # write this controller action
     # write a view template that displays orders
     # enhance with JS if required
     # @orders = Order.where(something..)
+  end
+
+  def driver_route
+    @morning_orders = Order.where("pickup_day= ?", Date.today).where("pickup_time= ?", "AM") || Order.where("return_day= ?", Date.today).where("return_time= ?", "AM")
+    @afternoon_orders = Order.where("pickup_day= ?", Date.today).where("pickup_time= ?", "PM") || Order.where("return_day= ?", Date.today).where("return_time= ?", "PM")
   end
 
   # GET /orders/1
