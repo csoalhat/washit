@@ -3,61 +3,57 @@
   .btn-group#order-status-selection{"data-toggle" => "buttons"}
     %label.btn.btn-primary.active
       %input#option1.order-status-filter{checked: "checked", name: "options", type: "radio", data:{status: "pending"}}/
-      Pending Orders
+      Orders waiting for approval
     %label.btn.btn-primary
       %input#option2.order-status-filter{name: "options", type: "radio", data:{status: "processed"}}/
-      Orders in Process
+      Orders being processed
     %label.btn.btn-primary
       %input#option3.order-status-filter{name: "options", type: "radio", data:{status: "archived"}}/
       Archived Orders
 %br
-.row
 .row
   .boxes
     .col-xs-12
       .large.box
         .icon
           .image
-            %span.glyphicon.glyphicon-tag.btn-lg.white
-          .info.clearfix
-            %h3.title 
+            %span.glyphicon.glyphicon-plus.btn-lg.white
+          .none
+            %h3 
             - @orders.each_with_index do |order, index|
-              .row.order{data: {status: order.status}}
+              .row.orderbox.order{data: {status: order.status}}
                 %h2 Order #{index + 1}
                 %h4 
                   - if current_user && current_user.role == "provider"
-                    %span #{order.user.first_name} #{order.user.last_name}
-                %h4 
+                    %p Name: #{order.user.first_name} #{order.user.last_name}
+                    %p Address: #{order.user.address}, #{order.user.zipcode}
+                    %p Phone: #{order.user.phone}
+                %p
+                  %p Order will be picked up on #{order.pickup_day} during the #{order.pickup_time} and will be returned on #{order.return_day} in the #{order.return_time}.
+
+                %br
                   - if order.instructions.present?
-                    %span Instructions:
-                    %span #{order.instructions} 
-                  %p
-                  - if order.dry_cleaning == true 
-                    %p Dry Cleaning
-                  - if order.wash == true
-                    %p Wash and Fold.
-                %h5
-                  %span Status:
-                  %span
-                  %i=order.status
-                  - if current_user && current_user.role == "provider"
-                    %p= link_to 'Change status', order, :class => "order_status"
-                  %h5 
-                %h5 
-                  %span Drop in:
-                  %span #{order.pickup_day} #{order.pickup_time}
-                %h5
-                  %span Return:
-                  %span #{order.return_day} #{order.return_time}
-                / should be javascript option only for provider
-                %h5
+                    %p Instructions: #{order.instructions} 
+                  - if order.dry_cleaning || order.wash == true
+                    Type:
+                    - if order.dry_cleaning == true 
+                      Dry Cleaning 
+                    - if order.wash == true
+                      Wash and Fold 
+                  %br
+                  / - if current_user && current_user.role == "provider"
+                  /   %p= link_to 'Change status', order, :class => "order_status"
+                  / %p 
+                %p
                 - if order.status != "pending"
-                  %span Price: 
-                  %span 
-                    = order.price
+                  %p Price: $ #{order.price}
                 - if current_user && current_user.role == "provider"
                   - if order.status == "pending"
-                    %p= link_to 'Add Price', edit_order_path(order)
+                    %h2= link_to 'Accept order', edit_order_path(order)
+                  %br
+                  - if order.status != "pending"
+                    %h2= link_to 'Update Status', edit_order_path(order)
+                  = link_to 'Cancel order', order_path(order), method: :delete
          
 
 

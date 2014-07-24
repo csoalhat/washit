@@ -3,6 +3,9 @@ body {
     font-weight: 400;
 }
 
+.link {
+  color: #2C3E50;
+}
 .pure-img-responsive {
     max-width: 100%;
     height: auto;
@@ -311,6 +314,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 .info {
   min-height: 170px;
   border-radius: 5px;
+
 }
 
 .box > .icon > .info {
@@ -496,5 +500,24 @@ p {
  /* border-radius: 5px;*/
   width: 300px;
 }
+
+.row {
+  width: 100%;
+}
+.row.orderbox.order{
+/*    margin: auto;*/
+    margin: auto;
+    width: 75%;
+    border: 3px solid #2C3E50;
+    border-radius: 5px;
+    background: white;
+    vertical-align: middle;
+    position: relative;
+    float: center;
+    margin-bottom: 40px;
+    text-align: center;
+    padding: 10px;
+}
+
 
 @import "bootstrap";

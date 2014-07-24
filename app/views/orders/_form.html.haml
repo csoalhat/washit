@@ -43,7 +43,10 @@
           
               - if current_user && current_user.role == "provider"
                 .pure-control-group
-                  = f.label :price
+                  Price:
                   = f.text_field :price
+                .pure-control-group
+                  Status:
+                  = f.select :status, options_for_select([["pending", "pending"], ["being processed", "processed"], ["closed", "archived"]])
               %br
               %button.pure-button.pure-button-primary{type: "submit"} Submit
