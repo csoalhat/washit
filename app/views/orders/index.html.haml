@@ -6,7 +6,7 @@
       Pending Orders
     %label.btn.btn-primary
       %input#option2.order-status-filter{name: "options", type: "radio", data:{status: "processed"}}/
-      Processed Orders
+      Orders in Process
     %label.btn.btn-primary
       %input#option3.order-status-filter{name: "options", type: "radio", data:{status: "archived"}}/
       Archived Orders
@@ -40,7 +40,7 @@
                   %span
                   %i=order.status
                   - if current_user && current_user.role == "provider"
-                    %p= link_to 'Change status', order, :class => "yolo"
+                    %p= link_to 'Change status', order, :class => "order_status"
                   %h5 
                 %h5 
                   %span Drop in:
@@ -50,11 +50,15 @@
                   %span #{order.return_day} #{order.return_time}
                 / should be javascript option only for provider
                 %h5
+                - if order.status != "pending"
                   %span Price: 
                   %span 
                     = order.price
                 - if current_user && current_user.role == "provider"
-                  %p= link_to 'Add Price', edit_order_path(order)
+                  - if order.status == "pending"
+                    %p= link_to 'Add Price', edit_order_path(order)
+         
+
 
 
 

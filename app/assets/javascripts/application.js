@@ -15,7 +15,7 @@
 
 $(document).ready(function(){
 
-  $('.yolo').click(function(event) {
+  $('.order_status').click(function(event) {
     event.preventDefault();
 
     // Find out the id of this order

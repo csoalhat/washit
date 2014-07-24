@@ -3,53 +3,83 @@
   %head
     %title Washit
     %link{href: "http://yui.yahooapis.com/pure/0.5.0/pure-min.css", rel: "stylesheet"}/
+
+    %link{href: "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel: "stylesheet"}/
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCRcbP5XDgjl6ESmSrSDpSNdGwShDgMe8M&sensor=false", type: "text/javascript"}
 
+
   %body
-  #layout
-    / Menu toggle
-    %a#menuLink.menu-link{href: "#menu"}
-      / Hamburger icon
-      %span
-    #menu
-      .pure-menu.pure-menu-open
-        %a.pure-menu-heading=link_to 'WASHIT', root_path
-        %ul
-        - if current_user && current_user.role == "customer"
-          %li
-            %a=link_to 'Order', new_order_path
-          %li
-            %a=link_to 'Past Orders', orders_path
-          %li
-            %a=link_to 'Prices', prices_home_index_path 
-        - if current_user && current_user.role == "provider"
-          %li
-            %a=link_to 'Dashboard', dashboard_orders_path
-          %li
-            %a=link_to 'Clients', users_path
-          %li
-            %a=link_to 'Orders', orders_path
-          %li
-            %a=link_to 'Drivers Info', map_home_index_path
+  .header
+    .home-menu.pure-menu.pure-menu-open.pure-menu-horizontal
+      #logo 
+        %img{src: "http://i.imgur.com/TjA8xOY.png"}/
+      %ul#links
+      - if current_user && current_user.role == "customer"
+        %li
+          =link_to 'Order', new_order_path
+        %li
+          =link_to 'Past Orders', orders_path
+        %li
+          =link_to 'Prices', prices_home_index_path 
+      - if current_user && current_user.role == "provider"
+        %li
+          =link_to 'Dashboard', dashboard_orders_path
+        %li
+          =link_to 'Clients', users_path
+        %li
+          =link_to 'Orders', orders_path
+        %li
+          =link_to 'Drivers Info', map_home_index_path
 
-    #main
-      #signin
-        - if user_signed_in?
-          - if current_user.image? && current_user.name?
-            = image_tag current_user.image, class: "small-avatar"
-            %b= current_user.name
-          - else
-            Logged in as
-            %b= current_user.email
+      - if user_signed_in?
+        %li
           = link_to 'Edit Profile', edit_user_registration_path
-          \|
+        %li
           = link_to 'Logout',  destroy_user_session_path, method: :delete
-      .space
-      .header
-        = yield
+  / #layout
+  /   / Menu toggle
+  /   %a#menuLink.menu-link{href: "#menu"}
+  /     / Hamburger icon
+  /     %span
+  /   #menu
+  /     .pure-menu.pure-menu-open
+  /       %a.pure-menu-heading=link_to 'WASHIT', root_path
+  /       %ul
+  /       - if current_user && current_user.role == "customer"
+  /         %li
+  /           %a=link_to 'Order', new_order_path
+  /         %li
+  /           %a=link_to 'Past Orders', orders_path
+  /         %li
+  /           %a=link_to 'Prices', prices_home_index_path 
+  /       - if current_user && current_user.role == "provider"
+  /         %li
+  /           %a=link_to 'Dashboard', dashboard_orders_path
+  /         %li
+  /           %a=link_to 'Clients', users_path
+  /         %li
+  /           %a=link_to 'Orders', orders_path
+  /         %li
+  /           %a=link_to 'Drivers Info', map_home_index_path
 
-    %footer
-    
+  #main
+    / #signin
+    /   - if user_signed_in?
+    /     - if current_user.image? && current_user.name?
+    /       = image_tag current_user.image, class: "small-avatar"
+    /       %b= current_user.name
+    /     - else
+    /       Logged in as
+    /       %b= current_user.email
+    /     = link_to 'Edit Profile', edit_user_registration_path
+    /     \|
+    /     = link_to 'Logout',  destroy_user_session_path, method: :delete
+    .space
+    .header
+      = yield
+
+  %footer
+  
