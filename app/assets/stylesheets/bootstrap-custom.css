@@ -237,9 +237,30 @@ Hides the menu at `48em`, but modify this based on your app's needs.
       left: 150px;
   }
 
+.btn.btn-primary {
+  background-color: #2C3E50;
+  border-color:  #2C3E50;
+}
+
+.btn.btn-primary:hover {
+  background-color: #E74C3C;
+  border-color: #E74C3C;
 }
 
 
+}
+.btn.btn-primary.active {
+  background-color: #E74C3C;
+  border-color: #E74C3C;
+}
+
+.pure-button-primary {
+  background-color: #E74C3C;
+}
+
+.pure-button-primary:hover {
+  background-color: #2C3E50;
+}
 
 .white {
     color: white;
@@ -471,5 +492,9 @@ p {
   margin-top: 100px;
 }
 
+.text_field {
+ /* border-radius: 5px;*/
+  width: 300px;
+}
 
 @import "bootstrap";

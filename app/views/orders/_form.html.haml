@@ -7,30 +7,40 @@
             %span.glyphicon.glyphicon-plus.btn-lg.white
           .info
             %h3.title New Order
+            %br
             %fieldset
             = form_for @order do |f|
               - if current_user && current_user.role == "customer"
+                %h2 Order details
                 .pure-control-group
-                  = f.label :pickup_day
-                  = f.date_select :pickup_day
-                .pure-control-group
-                  = f.label :pickup_time
-                  = f.select :pickup_time, options_for_select([["AM", "AM"], ["PM", "PM"]])
-                .pure-control-group
-                  = f.label :return_day
-                  = f.date_select :return_day
-                .pure-control-group
-                  = f.label :return_time
-                  = f.select :return_time, options_for_select([["AM", "AM"], ["PM", "PM"]])
-                .pure-control-group
-                  = f.label :instructions
-                  = f.text_field :instructions
-                .pure-control-group
-                  = f.label :dry_cleaning
+                  Dry cleaning
                   = f.check_box :dry_cleaning
-                .pure-control-group
-                  = f.label :wash
+                  %nbsp ---
+                  Wash only
                   = f.check_box :wash
+                %br
+                .pure-control-group
+                  Specific instructions
+                  = f.text_field :instructions, :class => "text_field"
+                %br
+                %h2 When?
+                %span
+                  .pure-control-group
+                    Pick-up my clothes on
+                    = f.date_select :pickup_day, :discard_year =>true
+                    %nbsp    
+                    during the
+                    = f.select :pickup_time, options_for_select([["morning", "AM"], ["afternoon", "PM"]])
+                %br
+                .pure-control-group
+                  Return my fresh laundry on
+                  = f.date_select :return_day, :discard_year =>true
+                  %nbsp 
+                  during the 
+                  = f.select :return_time, options_for_select([["morning", "AM"], ["afternoon", "PM"]])
+                %br
+                
+          
               - if current_user && current_user.role == "provider"
                 .pure-control-group
                   = f.label :price

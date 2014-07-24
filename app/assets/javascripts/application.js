@@ -26,7 +26,6 @@ $(document).ready(function(){
     var currentStatus = $($(this).parent().prev()[0]).text();
 
     // Define what data we're posting to the order controller
-    // This is lame I'm sorry
     if (currentStatus == 'pending') {
       var data = 'processed';
     } else if (currentStatus == 'processed') {

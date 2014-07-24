@@ -20,16 +20,17 @@
           .image
             %span.glyphicon.glyphicon-tag.btn-lg.white
           .info.clearfix
-            %h3.title See all Orders
+            %h3.title 
             - @orders.each_with_index do |order, index|
-              .xs.col-xs-4.order{data: {status: order.status}}
+              .row.order{data: {status: order.status}}
                 %h2 Order #{index + 1}
-                %h3 
+                %h4 
                   - if current_user && current_user.role == "provider"
                     %span #{order.user.first_name} #{order.user.last_name}
-                %h5 
-                  %span Information:
-                  %span #{order.instructions} 
+                %h4 
+                  - if order.instructions.present?
+                    %span Instructions:
+                    %span #{order.instructions} 
                   %p
                   - if order.dry_cleaning == true 
                     %p Dry Cleaning
