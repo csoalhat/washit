@@ -236,6 +236,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   #layout.active .menu-link {
       left: 150px;
   }
+
 }
 
 
@@ -323,7 +324,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 .box > .icon:hover > .info > .more > a {
     color: #E74C3C;
     padding: 6px 8px;
-    border-bottom: 4px solid #E74C3C;
+/*    border-bottom: 1px solid #E74C3C;*/
 }
 
 .box .space {
@@ -419,7 +420,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
 
 .pure-menu:hover a:hover {
-  background-color: rgba(44,62,80);
+  /*background-color: rgba(44,62,80, 1);*/
 }
 
 .header {
@@ -451,9 +452,9 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     color: white;
 }
 
-.home-menu a {
+/*.home-menu a {
     color: #2C3E50;
-}
+}*/
 .home-menu li a:hover,
 .home-menu li a:focus {
     background: none;
@@ -464,6 +465,10 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 p {
   font-weight: 400;
   color: #2C3E50;
+}
+
+.margintop {
+  margin-top: 100px;
 }
 
 
