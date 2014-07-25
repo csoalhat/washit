@@ -1,20 +1,17 @@
-
 .row
   .boxes
     .col-xs-12
       .large.box
         .icon
           .image
-            %span.glyphicon.glyphicon-tag.btn-lg.white
-          .info.clearfix
+            %span.glyphicon.glyphicon-user.btn-lg.white
+          .none
             %h3.title Customers
             - @users.each_with_index do |user, index|
-              .xs.col-xs-4
-                %h2 Client #{index + 1} 
-                %h5
-                  %span Name:
-                  %span #{user.first_name} #{user.last_name}
-                %h5 
-                  %span Contact Details:
-                  %span #{user.email} 
-                  %span #{user.phone}
+              %h2 Client #{index + 1} 
+              %h5
+                %h4 Name: #{user.first_name} #{user.last_name}
+                %p Address: #{user.address}, #{user.zipcode}
+                %p Email: #{user.email} 
+                %p Phone: #{user.phone}
+

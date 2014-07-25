@@ -28,6 +28,7 @@
                 %br
                   - if order.instructions.present?
                     Instructions: #{order.instructions} 
+                %br
                   - if order.dry_cleaning || order.wash == true
                     Type:
                     - if order.dry_cleaning == true 
@@ -44,7 +45,7 @@
                   %p Price: $ #{order.price}
                 - if current_user && current_user.role == "provider"
                   - if order.status == "pending"
-                    %h2#link= link_to 'Accept order', edit_order_path(order)
+                    %h2= link_to 'Accept order', edit_order_path(order)
                   %br
                   - if order.status != "pending"
                     %h2= link_to 'Update Status', edit_order_path(order)
