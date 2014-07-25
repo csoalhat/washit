@@ -1,3 +1,6 @@
+
+/*@import "bootstrap";*/
+
 body {
     color: #2C3E50;
     font-weight: 400;
@@ -6,6 +9,11 @@ body {
 .link {
   color: #2C3E50;
 }
+
+.link:hover {
+  color: #2C3E50;
+}
+
 .pure-img-responsive {
     max-width: 100%;
     height: auto;
@@ -24,28 +32,6 @@ Add transition to containers so they can push in and out.
     transition: all 0.2s ease-out;
 }
 
-/*
-This is the parent `<div>` that contains the menu and the content area.
-*/
-/*#layout {
-    position: relative;
-    padding-left: 0;
-}
-    #layout.active {
-        position: relative;
-        left: 150px;
-    }
-        #layout.active #menu {
-            left: 150px;
-            width: 150px;
-        }
-
-        #layout.active .menu-link {
-            left: 150px;
-        }*/
-/*
-The content `<div>` is where all your content goes.
-*/
 .content {
     margin: 0 auto;
     padding: 0 2em;
@@ -517,7 +503,36 @@ p {
     margin-bottom: 40px;
     text-align: center;
     padding: 10px;
+    display: block;
 }
 
+a {
+  color: #2C3E50;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #2C3E50;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted #2C3E50;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
 
-@import "bootstrap";
+#left {
+  width: 50%;
+  float: left;
+  position: relative;
+  text-align: right;
+  padding-right: 30px;
+}
+
+#right {
+  width: 50%;
+  float: right;
+  position: relative;
+  text-align: left;
+  padding-left: 30px;
+}

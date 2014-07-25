@@ -4,14 +4,35 @@
       .large.box
         .icon
           .image
-            %span.glyphicon.glyphicon-tag.btn-lg.white
-          .info
-            %h3.title Today's Orders
-            - @orders.each do |order|
-              %b= order.pickup_time
-              %b= order.user.address
-              = order.user.first_name
-              %br
+            %span.glyphicon.glyphicon-tasks.btn-lg.white
+          .none
+            %h3 
+            .row
+              #left 
+                %h2 Morning orders
+                - @orders.each do |order|
+                  - if order.pickup_time == "AM"
+                    %b Client: #{order.user.first_name} #{order.user.last_name}
+                    %p Address: #{order.user.address}, #{order.user.zipcode}
+                    - if order.instructions.present?
+                      %p Instructions: #{order.instructions}
+                  - elsif order.pickup_time == "PM"
+                  - else 
+                    %h3 There are no orders scheduled this morning.
+              #right 
+                %h2 Afternoon orders
+                - @orders.each do |order|
+                  - if order.pickup_time == "PM"
+                    %b Client: #{order.user.first_name} #{order.user.last_name}
+                    %p Address: #{order.user.address}, #{order.user.zipcode}
+                    - if order.instructions.present?
+                      %p Instructions: #{order.instructions}
+                  - elsif order.pickup_time == "AM"
+                  - else  
+                    %h3 There are no orders scheduled this afternoon.
+
+
+
 
 
 

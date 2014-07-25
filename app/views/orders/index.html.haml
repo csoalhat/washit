@@ -23,33 +23,28 @@
             - @orders.each_with_index do |order, index|
               .row.orderbox.order{data: {status: order.status}}
                 %h2 Order #{index + 1}
-                %h4 
-                  - if current_user && current_user.role == "provider"
-                    %p Name: #{order.user.first_name} #{order.user.last_name}
-                    %p Address: #{order.user.address}, #{order.user.zipcode}
-                    %p Phone: #{order.user.phone}
                 %p
-                  %p Order will be picked up on #{order.pickup_day} during the #{order.pickup_time} and will be returned on #{order.return_day} in the #{order.return_time}.
-
+                  %p Order will be picked up on #{order.pickup_day.to_formatted_s(:rfc822)} during the #{order.pickup_time} and will be returned on #{order.return_day.to_formatted_s(:rfc822)} in the #{order.return_time}
                 %br
                   - if order.instructions.present?
-                    %p Instructions: #{order.instructions} 
+                    Instructions: #{order.instructions} 
                   - if order.dry_cleaning || order.wash == true
                     Type:
                     - if order.dry_cleaning == true 
                       Dry Cleaning 
                     - if order.wash == true
                       Wash and Fold 
-                  %br
-                  / - if current_user && current_user.role == "provider"
-                  /   %p= link_to 'Change status', order, :class => "order_status"
-                  / %p 
+                %br
+                  - if current_user && current_user.role == "provider"
+                    %b Client: #{order.user.first_name} #{order.user.last_name}
+                    %p Address: #{order.user.address}, #{order.user.zipcode}
+                    Phone: #{order.user.phone}
                 %p
                 - if order.status != "pending"
                   %p Price: $ #{order.price}
                 - if current_user && current_user.role == "provider"
                   - if order.status == "pending"
-                    %h2= link_to 'Accept order', edit_order_path(order)
+                    %h2#link= link_to 'Accept order', edit_order_path(order)
                   %br
                   - if order.status != "pending"
                     %h2= link_to 'Update Status', edit_order_path(order)

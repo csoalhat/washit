@@ -34,7 +34,7 @@
                 %br
                 .pure-control-group
                   Return my fresh laundry on
-                  = f.date_select :return_day, :discard_year =>true
+                  = f.date_select :return_day, :discard_year =>true, default: 1.day.from_now
                   %nbsp 
                   during the 
                   = f.select :return_time, options_for_select([["morning", "AM"], ["afternoon", "PM"]])
