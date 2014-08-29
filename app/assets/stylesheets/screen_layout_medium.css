@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+/* Layout Medium Screens */
+
+header {
+  height: 200px;
+  background: url(../images/banner_medium.jpg) no-repeat 90% 0px;
+}
+
+header a.logo {
+  width: 140px;
+  height: 162px;
+  top: 20px;
+  right: 70%;
+  background: url(../images/logo_medium.png);
+}
+
+nav {
+  top: 200px;
+}
+
+nav a {
+  margin-right: 20px;
+}
+
+.promo_container {
+  padding: 0px 20px 15px 70px;
+  text-align: center;
+}
+
+.promo_container .promo {
+  background-position: 40px 0px;
+}
+
+.promo_container .promo .content {
+  padding: 85px 30px 0px 0px;
+}
+
+body {
+  background-image: none; 
+}
+
+
+.top {
+  position: absolute;
+  right: 140px;
+  top: 100px;
+  }
+
+.washit {
+  position: absolute;
+  right: 140px;
+  top: 50px;
+}
+
+.button { 
+  position: absolute;
+  width: 200px;
+  top: 135px;
+  right: 150px;
+}
+
+.signin {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+footer {
+  margin-top: 40px;
+}

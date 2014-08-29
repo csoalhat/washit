@@ -4,18 +4,26 @@
     %title Washit
     %link{href: "http://yui.yahooapis.com/pure/0.5.0/pure-min.css", rel: "stylesheet"}/
 
-    / %link{href: "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel: "stylesheet"}/
+    %link{href: "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel: "stylesheet"}/
     = stylesheet_link_tag "application", media: "all"
+    / = stylesheet_link_tag "screen_layout_large.css", media: "all"
+    / = stylesheet_link_tag "screen_layout_small.css", media: "only screen and (min-width:50px) and (max-width:500px)"
+    / = stylesheet_link_tag "screen_layout_medium.css", media: "only screen and (min-width:501px) and (max-width:800px)"
     = javascript_include_tag "application"
     = csrf_meta_tags
     / %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCRcbP5XDgjl6ESmSrSDpSNdGwShDgMe8M&sensor=false", type: "text/javascript"}
 
+    %meta{:content => "width=devise-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0", :name => "viewport"}/
+    / %link{:href => "../app/assets/stylesheets/screen_styles.css", :rel => "stylesheet", :type => "text/css"}/
+    / %link{:href => "../app/assets/stylesheets/screen_layout_large.css", :rel => "stylesheet", :type => "text/css"}/
+    / %link{:href => "../app/assets/stylesheets/screen_layout_small.css", :media => "only screen and (min-width:50px) and (max-width:500px)", :rel => "stylesheet", :type => "text/css"}/
+    / %link{:href => "../app/assets/stylesheets/screen_layout_medium.css", :media => "only screen and (min-width:501px) and (max-width:800px)", :rel => "stylesheet", :type => "text/css"}/
 
   %body
   .header
     .home-menu.pure-menu.pure-menu-open.pure-menu-horizontal
       #logo 
-        %img{src: "http://i.imgur.com/TjA8xOY.png"}/
+        =image_tag "washit-logo.png"
       %ul#links
       - if current_user && current_user.role == "customer"
         %li

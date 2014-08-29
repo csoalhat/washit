@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+/* Layout Small Screens */
+
+header {
+  height: 230px;
+  background: url(../images/banner_small.jpg) no-repeat right 0px;
+}
+
+header a.logo {
+  width: 105px; 
+  height: 122px;
+  top: 30px;
+  right: 74%;
+  background: url(../images/logo_small.png);
+}
+
+article {
+  padding: 40px 20px 10px 20px;
+}
+
+nav {
+  position: static; 
+  padding: 10px 0px 10px 0px;
+  background-color: #45B2AF;
+}
+
+nav a {
+  color: #3B383F;
+  display: block;
+  margin: 15px;
+  padding: 9px;
+  border: 1px solid #F3F0EE;
+  background: url(../images/mobile_link_arrow.png) no-repeat right center;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+}
+
+nav a:hover {
+  color: #F3F0EE;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.promo_container {
+  padding: 30px;
+}
+
+.promo_container .promo {
+  width: auto;
+  float: none;
+  padding: 40px 0px 0px 0px;
+  background-position: 40px 40px;
+  border-top: 1px solid #ccc;
+  max-height: 100px;
+}
+
+.promo_container .promo .content {
+  padding: 0px 20px 5px 210px;
+}
+
+
+body {
+  background-image: none;
+}
+
+.top {
+  position: absolute;
+  right: 70px;
+  top: 110px;
+  }
+
+.washit {
+  position: absolute;
+  right: 70px;
+  top: 60px;
+}
+
+.button { 
+  position: absolute;
+  width: 180px;
+  top: 160px;
+  right: 110px;
+}
+
+.signin {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}

@@ -1,0 +1,173 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600);
+
+/* Global Content Formatting and Styles */
+
+body {
+  color: #3B383F;
+  line-height: 1.5em;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  background: #F3F0EE url(../images/background_gradient.jpg) repeat-x 0px 0px;
+  font-weight: 400;
+}
+
+.page {
+  max-width: 980px;
+  margin: 0px auto 0px auto;
+  position: relative;
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 1.4em;
+  font-weight: normal;
+  color: #45B2AF;
+  margin: 0 0 0.5em 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 0 0 1em 0;
+}
+
+h3 {
+  font-size: 3em;
+  margin: 0 0 1em 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+}
+
+p {
+  margin: 0 0 0.7em 0;
+}
+
+a {
+  color: #45B2AF;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+a:hover {
+   color: #3B383F;
+   text-decoration: none;
+   text-align: center;
+}
+
+
+.top {
+  font-size: 1.4em;
+  text-transform: uppercase;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #fff;
+  font-weight: 200;
+}
+
+.washit {
+  font-size: 5em;
+  text-transform: uppercase;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 200;
+  color: #fff;
+}
+
+.signin {
+  width: 100px;
+  height: 20px;
+  background: #45B2AF;
+}
+.signin a {
+  font-size: 0.9em;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 200;
+  color: #fff;
+}
+a.cta {
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0.5em 0 0 0;
+  padding: 0px 12px 0px 0px;
+  background: url(..assets/images/cta_arrow.png) no-repeat right 0px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+}
+
+a.cta:hover {
+  background-position: right -50px;
+}
+
+.promo h3 {
+  font-size: 1.2em;
+  margin: 0;
+  color: #45B2AF;
+}
+
+.promo p {
+  margin-top: 1.2em;
+  line-height: 1.2em;
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+
+.promo {
+  background-repeat: no-repeat;
+}
+
+.promo.one { background-image: url(../images/icon_1.png); }
+.promo.two { background-image: url(../images/icon_2.png); }
+.promo.three { background-image: url(../images/icon_3.png); }
+
+nav a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+.clear-fix {
+  clear: both;
+  line-height: 30px;
+}
+
+.button {
+  border-radius: 86px;  
+  background: #45B2AF;
+  line-height: 45px;
+}
+
+.button a {
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 200;
+  text-transform: uppercase;
+  font-size: 1.7em;
+
+}
+
+footer {
+  background-color: #45B2AF;
+  text-align: center;
+  color: #fff;
+  max-width: 980px;
+}
+/*
+.button a:hover {
+  background: #45B2AF;
+  -moz-box-shadow:    0px 1px 5px 0px rgba(0,0,0,0.31);
+  box-shadow:         0px 1px 5px 0px rgba(0,0,0,0.31);
+}
+*/
